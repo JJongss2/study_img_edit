@@ -1,0 +1,14 @@
+def func_ratio_resize():
+    global window, canvas, paper, photo, photo2, oriX, oriY, angle
+
+    ratio = askinteger("비율 입력", '줄이고 싶은 비율을 입력해 주세요.(0~100)\n\n'
+                                '                 30을 권장합니다.')
+
+    newX = photo2.width * ratio // 100
+    newY = photo2.height * ratio // 100
+    photo2 = photo.copy()
+    photo2 = photo2.resize((int(newX), int(newY)))
+    display_image(photo2, newX, newY)
+
+    photo = photo2  # 계속 편집 가능(안 적을 시 연속 편집 불가능)
+    print("높이:", newX, " 너비:", newY)  # 편집 후 사이즈 출력
